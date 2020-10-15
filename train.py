@@ -55,8 +55,8 @@ def prepcs(adr, adrc, co, non_feature, txt_type):
 
 for ismoke in status:
     for id in range(1000):
-        adr_train = './DM_P1/Case_Presentation_1/{}_ID_{}.txt'.format(ismoke, id)
-        adrc_train = './DM_P1/Case_Presentation_1/{}_ID_{}_encoded.txt'.format(ismoke, id)
+        adr_train = './Case_Presentation_1/{}_ID_{}.txt'.format(ismoke, id)
+        adrc_train = './Case_Presentation_1/{}_ID_{}_encoded.txt'.format(ismoke, id)
         try:
             data_lst, co, non_feature_train, lst_len = prepcs(adr_train, adrc_train, co, non_feature_train, 'train')
             x.append(data_lst)
@@ -95,8 +95,8 @@ num_test = 40
 non_feature_test = num_test
 for num in range(num_test):
     text = ('TEST_' if num >= 9 else 'TEST_0')
-    adr_test = './DM_P1/Case_Presentation_1_Testing_Data/' + text + '{}.txt'.format(num+1)
-    adrc_test = './DM_P1/Case_Presentation_1_Testing_Data/' + text + '{}_c.txt'.format(num+1)
+    adr_test = './Case_Presentation_1_Testing_Data/' + text + '{}.txt'.format(num+1)
+    adrc_test = './Case_Presentation_1_Testing_Data/' + text + '{}_c.txt'.format(num+1)
     data_lst, co, non_feature_test, lst_len = prepcs(adr_test, adrc_test, co, non_feature_test, 'test')
     x_test.append(data_lst)
  
@@ -208,7 +208,7 @@ def train(model, num_epochs, loss_function, optimizer, train_iter, val_iter):
         'state_dict': model.state_dict(),
         'optimizer': optimizer.state_dict()
     }
-    torch.save(state, os.path.join('./DM_P1', 'last_model.pt'))
+    torch.save(state, os.path.join('./', 'last_model.pt'))
 
 def predict(model, test_iter):
     pred_lst = []
@@ -234,7 +234,7 @@ def draw(x, y, types):
     plt.ylabel(types.capitalize())
     plt.legend(a, ('train', 'val'))
 
-    plt.savefig('./DM_P1/' + types + '_graph.png')
+    plt.savefig(types + '_graph.png')
     plt.show()
 
 draw(plot_x, plot_y_loss, 'loss')
@@ -246,7 +246,7 @@ pred_class = []
 for result in pred:
     pred_class.append(status[result])
 
-adr_result = './DM_P1/case1_5.txt'
+adr_result = 'case1_5.txt'
 with open (adr_result, 'w') as f3:
     for i in range(data_length):
         f3.write(pred_class[i] + '\n')
