@@ -55,8 +55,8 @@ def prepcs(adr, adrc, co, non_feature, txt_type):
 
 for ismoke in status:
     for id in range(1000):
-        adr_train = './Case_Presentation_1/{}_ID_{}.txt'.format(ismoke, id)
-        adrc_train = './Case_Presentation_1/{}_ID_{}_encoded.txt'.format(ismoke, id)
+        adr_train = './data/training/{}_ID_{}.txt'.format(ismoke, id)
+        adrc_train = './data/training/{}_ID_{}_encoded.txt'.format(ismoke, id)
         try:
             data_lst, co, non_feature_train, lst_len = prepcs(adr_train, adrc_train, co, non_feature_train, 'train')
             x.append(data_lst)
@@ -95,8 +95,8 @@ num_test = 40
 non_feature_test = num_test
 for num in range(num_test):
     text = ('TEST_' if num >= 9 else 'TEST_0')
-    adr_test = './Case_Presentation_1_Testing_Data/' + text + '{}.txt'.format(num+1)
-    adrc_test = './Case_Presentation_1_Testing_Data/' + text + '{}_c.txt'.format(num+1)
+    adr_test = './data/test/' + text + '{}.txt'.format(num+1)
+    adrc_test = './data/test/' + text + '{}_c.txt'.format(num+1)
     data_lst, co, non_feature_test, lst_len = prepcs(adr_test, adrc_test, co, non_feature_test, 'test')
     x_test.append(data_lst)
  
