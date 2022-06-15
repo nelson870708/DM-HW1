@@ -1,5 +1,29 @@
 # DM-HW1
 The homework aims to identify the smoking status of the patient by using machine learning approaches.
 
+## Hardware
+The following specs were used to create the original solution.
+- Ubuntu 18.04 LTS
+- Intel(R) Core(TM) i5-8400 CPU @ 2.80GHz
+- NVIDIA RTX 2070
+
+## Installation
+All requirements should be detailed in requirements.txt. Using Anaconda is strongly recommended. {envs_name} is the new environment name which you should assign.
+```bash
+conda create -n {envs_name} python=3.6
+source activate {envs_name}
+pip install -r requirements.txt
+```
+
+## Training
+```bash
+$ python3 train.py
+```
+
 ## Details
-The code, train.py, using 2-layers bidirectional LSTM model to train and predict the smoking status of patients. To reproduce the result, you have to make sure the packages version must be same or later as the packages mentioned in the requirement.txt, then the code should work successfully. The code will output three files, which are named as loss_graph.png, acc_graph.png and case1_5.txt. The loss_graph.png shows the loss variety and the acc_graph.png shows the accuracy variety of train and validation model when the number of  epoch gets growth. The case1_5.txt records the predict result of the testing data.      
+The code, train.py, using 2-layers bidirectional LSTM model to train and predict the smoking status of patients.
+
+The code will output three files
+1. loss_graph.png: shows the loss during training
+2. acc_graph.png: shows the accuracy during training and validation
+3. case1_5.txt: records prediction of test data
